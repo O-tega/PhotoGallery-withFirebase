@@ -15,6 +15,7 @@ const UploadForm = () => {
 		// check if file exist
 		if (selected && types.includes(selected.type)) {
 			setFile(selected);
+			setError('')
 		}else{
             setFile(null);
             setError('please select a valid image type (png or jpg)')
@@ -24,6 +25,11 @@ const UploadForm = () => {
 	return (
 		<div>
 			<input type='file' onChange={changeHandler} />
+			<div>
+				{error && <div className="text-xs text-red-500 py-2">{error}</div>}
+				{file && <div className="text-xs text-blue-700 py-2">{file.name}</div>}
+			</div>
+
 		</div>
 	);
 };
