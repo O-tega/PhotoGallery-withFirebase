@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ProgressBar from "./progressBar";
 
 const UploadForm = () => {
     // array of types
@@ -28,6 +29,7 @@ const UploadForm = () => {
 			<div>
 				{error && <div className="text-xs text-red-500 py-2">{error}</div>}
 				{file && <div className="text-xs text-blue-700 py-2">{file.name}</div>}
+				{file && <div><ProgressBar file={file} setFile= {setFile}/></div>}
 			</div>
 
 		</div>
