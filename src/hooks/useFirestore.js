@@ -8,7 +8,7 @@ const useFirestore =(collection)=>{
 
     // get data for everyupdate using useeffect
     useEffect(()=>{
-        projectFireStore.collection(collection)
+        const unsub = projectFireStore.collection(collection)
         .orderBy('createdAt', 'desc')
         .onSnapshot((snap)=>{
             let document = []
@@ -18,7 +18,10 @@ const useFirestore =(collection)=>{
             setDocs(document)
         });
 
-        return {docs}
-    },[collection])
+        // A cleanup function to unsubcribe from the collection when the image grid component os unmounted
+        return ()=> unSub();
 
+    },[collection])
+    
+    return {docs}
 }
