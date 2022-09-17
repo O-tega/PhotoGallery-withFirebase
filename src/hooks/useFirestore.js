@@ -13,15 +13,17 @@ const useFirestore =(collection)=>{
         .onSnapshot((snap)=>{
             let document = []
             snap.forEach(doc =>{
-                document.push({...doc.data, id: doc.id})
+                document.push({...doc.data(), id: doc.id})
             });
             setDocs(document)
         });
 
         // A cleanup function to unsubcribe from the collection when the image grid component os unmounted
-        return ()=> unSub();
+        return ()=> unsub();
 
     },[collection])
     
     return {docs}
 }
+
+export default useFirestore;
