@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ImageGrid from "./components/ImageGrid";
 import Index from "./components/Index";
 import UploadForm from "./components/UploadForm";
+import Modal from "./components/Modal";
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
 				<Index />
 				<UploadForm />
 				<ImageGrid setSelectedImg = {setSelectedImg} selectedImg = {selectedImg}/>
+				{selectedImg && <Modal setSelectedImg = {setSelectedImg} selectedImg = {selectedImg}/>}
 			</div>
 		</div>
 	);

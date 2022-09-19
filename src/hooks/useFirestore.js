@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {projectFireStore} from '../firebase/config'
 
 
@@ -19,9 +19,9 @@ const useFirestore =(collection)=>{
         });
 
         // A cleanup function to unsubcribe from the collection when the image grid component os unmounted
-        return ()=> unsub();
+        return ()=> unsub(); 
 
-    },[collection])
+    },[collection] )
     
     return {docs}
 }
