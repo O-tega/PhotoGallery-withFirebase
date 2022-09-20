@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useFirestore from '../hooks/useFirestore'
+import CircularProgress from "@mui/material/CircularProgress";
 import { motion } from 'framer-motion'
 
 
 const ImageGrid = ({setSelectedImg, selectedImg}) =>{
+    const { docs, loading} = useFirestore('images');
+    const [isLoading, setIsLoading] = useState(false)
 
-    const { docs } = useFirestore('images');
+
+    console.log(isLoading)
+
+    useEffect(()=>{
+        setIsLoading(true);
+        const time = setTimeout(()=>{
+            setIsLoading(false)
+        }, 3000)
+    }, [])
 
     const Ddocs = docs.map(({url, id})=>(
             <motion.div key={id}
@@ -17,13 +28,17 @@ const ImageGrid = ({setSelectedImg, selectedImg}) =>{
             </motion.div>
         ))
 
-    return (
+
+    return(
         <div>
-        <div className=' flex justify-center py-12'>
-                <div className='grid grid-cols-3 gap-2'>
-                    {docs && Ddocs}
-                </div>
+        {isLoading? 
+            <div className='flex justify-center mt-48'><CircularProgress/></div>
+            :
+        <div className=' flex justify-center py-12'>  
+            <div className='grid grid-cols-3 gap-2'>
+                {docs && Ddocs}
             </div>
+        </div>}
 
         </div>
 		);
