@@ -22,7 +22,7 @@ const ImageGrid = ({setSelectedImg, selectedImg}) =>{
             <motion.div key={id}
             onClick = {()=>{setSelectedImg(url)} }
             layout
-            className='opacity-80 hover:opacity-100'
+            className='opacity-80 hover:opacity-100 transition delay-50'
             >
                 <motion.img src={url} alt="" className='rounded object-cover w-72 h-72 ' initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 1}}/>
             </motion.div>
