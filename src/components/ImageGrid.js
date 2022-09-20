@@ -13,7 +13,7 @@ const ImageGrid = ({setSelectedImg, selectedImg}) =>{
 
     useEffect(()=>{
         setIsLoading(true);
-        const time = setTimeout(()=>{
+        setTimeout(()=>{
             setIsLoading(false)
         }, 3000)
     }, [])
@@ -24,7 +24,7 @@ const ImageGrid = ({setSelectedImg, selectedImg}) =>{
             layout
             className='opacity-80 hover:opacity-100 transition delay-50'
             >
-                <motion.img src={url} alt="" className='rounded object-cover w-72 h-72 ' initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 1}}/>
+                <motion.img src={url} alt="" className='rounded object-cover w-72 h-72 sm: h-36 md:h-52 ' initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 1}}/>
             </motion.div>
         ))
 

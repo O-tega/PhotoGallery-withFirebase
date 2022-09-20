@@ -19,10 +19,10 @@ const useStorage = (file)=>{
         }, async()=>{
             const url = await storageRef.getDownloadURL();
             const createdAt = timeStamp();
-            collectionRef.add({url, createdAt})
+            collectionRef.add({url, createdAt}) 
             setUrl(url)
         })
-    },[file.name])
+    },[file])
 
     return {progress, url, error}
 }

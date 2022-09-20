@@ -4,13 +4,12 @@ import {projectFireStore} from '../firebase/config'
 
 const useFirestore =(collection)=>{
 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [docs, setDocs] = useState([]);
 
     // get data for everyupdate using useeffect
     useEffect(()=>{
         const unsub = async()=>{
-            setLoading(true)
            await projectFireStore.collection(collection)
             .orderBy('createdAt', 'desc')
             .onSnapshot((snap)=>{
